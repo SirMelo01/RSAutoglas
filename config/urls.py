@@ -29,9 +29,9 @@ urlpatterns = [
     path("kontakt/", view=kontaktform, name="kontakt"),
     path("datenschutz/", TemplateView.as_view(template_name="pages/datenschutz.html"), name="datenschutz"),
     path("cookies/", TemplateView.as_view(template_name="pages/cookies.html"), name="cookies"),
-    path("cms/", include("yoolink.ycms.urls", namespace="ycms")),
-    path("vorlagen/", include("yoolink.designtemplates.urls", namespace="designtemplates")),
-    path("blog/", include("yoolink.blog.urls", namespace="blog")),
+    path("cms/", include("rsautoglas.ycms.urls", namespace="ycms")),
+    path("vorlagen/", include("rsautoglas.designtemplates.urls", namespace="designtemplates")),
+    path("blog/", include("rsautoglas.blog.urls", namespace="blog")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS
