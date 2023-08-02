@@ -26,12 +26,6 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 TIME_ZONE = "UTC"
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = "en-us"
-# https://docs.djangoproject.com/en/dev/ref/settings/#languages
-# from django.utils.translation import gettext_lazy as _
-# LANGUAGES = [
-#     ('en', _('English')),
-#     ('pt-br', _('Português')),
-# ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
@@ -68,6 +62,7 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
+    "django.contrib.sitemaps",
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -85,6 +80,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "rsautoglas.users",
     # Your stuff: custom apps go here
+    "rsautoglas.ycms",
+    "rsautoglas.designtemplates",
+    "rsautoglas.blog",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -140,6 +138,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "rsautoglas.middleware.WwwRedirectMiddleware",
 ]
 
 # STATIC
@@ -162,6 +161,13 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(APPS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
+
+DEFAULT_FILE_STORAGE = 'config.settings.cdn.backends.MediaRootS3Boto3Storage'
+AWS_ACCESS_KEY_ID='DO00HJFLRWJCM3RQ6ANW'
+AWS_SECRET_ACCESS_KEY = 'sLTs3mPUprd3bNcafCVkzcdORA1VFqQn9zHYhGZUhks'
+AWS_STORAGE_BUCKET_NAME='yoolink-django'
+AWS_S3_ENDPOINT_URL='https://fra1.digitaloceanspaces.com/'
+AWS_LOCATION = 'https://yoolink-django.fra1.digitaloceanspaces.com/'
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
@@ -209,6 +215,8 @@ FIXTURE_DIRS = (str(APPS_DIR / "fixtures"),)
 SESSION_COOKIE_HTTPONLY = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#csrf-cookie-httponly
 CSRF_COOKIE_HTTPONLY = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#secure-browser-xss-filter
+SECURE_BROWSER_XSS_FILTER = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
 X_FRAME_OPTIONS = "DENY"
 
@@ -231,8 +239,6 @@ ADMINS = [("""Yoolink""", "yoolink@rsautoglas.de")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 # https://cookiecutter-django.readthedocs.io/en/latest/settings.html#other-environment-settings
-# Force the `admin` sign in process to go through the `django-allauth` workflow
-DJANGO_ADMIN_FORCE_ALLAUTH = env.bool("DJANGO_ADMIN_FORCE_ALLAUTH", default=False)
 
 # LOGGING
 # ------------------------------------------------------------------------------
@@ -338,3 +344,4 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+SITE_ID = 1
