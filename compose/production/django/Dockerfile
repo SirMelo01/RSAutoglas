@@ -1,3 +1,6 @@
+ARG PYTHON_VERSION=3.10-slim-bullseye
+
+
 
 # define an alias for the specific python version used in this file.
 FROM python:3.11.4-slim-bullseye as python
@@ -87,10 +90,5 @@ COPY --chown=django:django . ${APP_HOME}
 RUN chown django:django ${APP_HOME}
 
 USER django
-
-RUN DATABASE_URL="" \
-  CELERY_BROKER_URL="" \
-  DJANGO_SETTINGS_MODULE="config.settings.test" \
-  python manage.py compilemessages
 
 ENTRYPOINT ["/entrypoint"]
