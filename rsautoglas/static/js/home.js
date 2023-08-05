@@ -1,53 +1,30 @@
+const realmap = document.querySelector("#map");
+const covermap = document.querySelector("#covermap");
 var currentSlideId = 1;
+var map;
 var sliderElement = document.getElementById("slider");
 var totalSlides = sliderElement.childElementCount;
 let myInterval = setInterval(next, 7000);
 
-const browser = document.querySelector("#browser");
-const phone = document.querySelector("#phone");
-
-const content1 = document.querySelector("#content1");
-const arrow1 = document.querySelector("#arrow1");
-const content2 = document.querySelector("#content2");
-const arrow2 = document.querySelector("#arrow2");
-const content3 = document.querySelector("#content3");
-const arrow3 = document.querySelector("#arrow3");
-const content4 = document.querySelector("#content4");
-const arrow4 = document.querySelector("#arrow4");
-
-const responsive = document.querySelector("#Responsive");
-
-//Responsive Design
-
-
-//hier noch magin ändern 
-function toggleResponsive() {
-  if (phone.classList.contains("hidden")) {
-    responsive.classList.remove("xs:-mb-48");
-    browser.classList.add("hidden");
-    phone.classList.remove("hidden");
+function mapLoad() {
+  if (cookiemapselect === null || cookiemapselect === "false") {
+    covermap.classList.remove("hidden");
+    realmap.classList.add("hidden");
   } else {
-    responsive.classList.add("xs:-mb-48");
-    browser.classList.remove("hidden");
-    phone.classList.add("hidden");
+    covermap.classList.add("hidden");
+    realmap.classList.remove("hidden");
+
+    // Karte wird geladen
+    map.setView([48.6987771, 13.1176147], 13);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+    var marker = L.marker([48.698771, 13.1176147]).addTo(map);
+    map.scrollWheelZoom.disable();
   }
 }
-
-//FQA
-$(document).ready(function() {
-  $(".faq-toggle").click(function() {
-    var content = $(this).siblings(".faq-content");
-    var arrow = $(this).find(".faq-arrow");
-    
-    if (content.hasClass("hidden")) {
-      content.removeClass("hidden");
-      arrow.addClass("rotate-180");
-    } else {
-      content.addClass("hidden");
-      arrow.removeClass("rotate-180");
-    }
-  });
-});
 
 // Image slider
 function next() {
@@ -87,3 +64,16 @@ function showSlide() {
     }
   }
 }
+
+setTimeout(() => {
+  if (cookiemapselect !== null && cookiemapselect !== "false") {
+    map = L.map("map");
+    map.on("focus", function () {
+      map.scrollWheelZoom.enable();
+    });
+    map.on("blur", function () {
+      map.scrollWheelZoom.disable();
+    });
+  }
+  mapLoad();
+}, 500);

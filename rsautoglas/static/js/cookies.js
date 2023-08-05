@@ -1,7 +1,7 @@
 var form = document.querySelector("form");
 var cookieslider = document.getElementById("cookie");
-var analyticslider = document.getElementById("analytics");
-var fontslider = document.getElementById("font");
+var mapslider = document.getElementById("map");
+var fondslider = document.getElementById("fond");
 
 function cookiereload2() {
   if (cookieslider.checked === true) {
@@ -12,20 +12,20 @@ function cookiereload2() {
       "Cookie-Consent=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   }
 
-  if (analyticslider.checked === true) {
+  if (mapslider.checked === true) {
     document.cookie =
-      "Cookie-Analytic=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+      "Cookie-Map=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   } else {
     document.cookie =
-      "Cookie-Analytic=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+      "Cookie-Map=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   }
 
-  if (fontslider.checked === true) {
+  if (fondslider.checked === true) {
     document.cookie =
-      "Cookie-Font=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+      "Cookie-Fond=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   } else {
     document.cookie =
-      "Cookie-Font=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+      "Cookie-Fond=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   }
 }
 
@@ -34,29 +34,29 @@ onload = function () {
     cookieslider.checked = true;
   }
 
-  if (cookieanalyticselect === "true") {
-    analyticslider.checked = true;
+  if (cookiemapselect === "true") {
+    mapslider.checked = true;
   }
 
-  if (cookiefontselect === "true") {
-    fontslider.checked = true;
+  if (cookiefondselect === "true") {
+    fondslider.checked = true;
   }
 };
 
 cookieslider.addEventListener("change", (e) => {
   if (cookieslider.checked === true) {
-    analyticslider.checked = true;
-    fontslider.checked = true;
+    mapslider.checked = true;
+    fondslider.checked = true;
   } else {
-    analyticslider.checked = false;
-    fontslider.checked = false;
+    mapslider.checked = false;
+    fondslider.checked = false;
   }
   cookiereload2();
 });
 
-analyticslider.addEventListener("change", (e) => {
-  if (analyticslider.checked === true) {
-    if (fontslider.checked === true) {
+mapslider.addEventListener("change", (e) => {
+  if (mapslider.checked === true) {
+    if (fondslider.checked === true) {
       cookieslider.checked = true;
     }
   } else {
@@ -65,9 +65,9 @@ analyticslider.addEventListener("change", (e) => {
   cookiereload2();
 });
 
-fontslider.addEventListener("change", (e) => {
-  if (fontslider.checked === true) {
-    if (analyticslider.checked === true) {
+fondslider.addEventListener("change", (e) => {
+  if (fondslider.checked === true) {
+    if (mapslider.checked === true) {
       cookieslider.checked = true;
     }
   } else {
