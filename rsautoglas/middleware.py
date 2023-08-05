@@ -8,7 +8,7 @@ class WwwRedirectMiddleware:
 
     def __call__(self, request):
         host = request.get_host().partition(":")[0]
-        if host == "www.rsautoglas.de":
-            return HttpResponsePermanentRedirect("https://rsautoglas.de" + request.path)
+        if host == "rsautoglas.de":
+            return HttpResponsePermanentRedirect("https://www.rsautoglas.de" + request.path)
         else:
             return self.get_response(request)

@@ -3,38 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}YooLink{% endblock title %}</title>
+    <title>{% block title %}RSAutoglas{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Diese Webseite wurde erstellt von YooLink.de, Am Altbach 6, DE-94491 Hengersberg">
-    <meta name="description" content="YooLink ist die Webdesign Agentur im Raum Deggendorf. Unser Standard ist das Maximum aus Ihrem Internetauftritt herauszuholen. Dich erwartet Transparenz, Sichtbarkeit und &amp ein junges dynamisches Team">
-    <link rel="canonical" href="https://yoolink.de{{ request.path }}">
+    <meta name="description" content="RS Autoglas - Max Riedl &amp; Rainer Söldner GbR Winzer | professionell - leistungsstark - zuverlässig">
+    <link rel="canonical" href="https://www.rsautoglas.de{{ request.path }}">
 
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static 'favicon/apple-touch-icon-57x57.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'favicon/apple-touch-icon-114x114.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'favicon/apple-touch-icon-72x72.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{% static 'favicon/apple-touch-icon-60x60.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{% static 'favicon/apple-touch-icon-120x120.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{% static 'favicon/apple-touch-icon-76x76.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}" />
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-196x196.png' %}" sizes="196x196" />
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-32x32.png' %}" sizes="32x32" />
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-16x16.png' %}" sizes="16x16" />
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-128.png' %}" sizes="128x128" />
-
-
-    <!--<meta name="keywords" content="Yoolink, Webdesign, Homepageerstellung, Agentur, Deggendorf, Internetauftritt">-->
     <meta property="og:type" content="website">
-
-    
-    <meta name="twitter:description" content="YooLink ist die Webdesign Agentur im Raum Deggendorf. Unser Standard ist das Maximum aus Deinem Internetauftritt herauszuholen. Dich erwartet Transparenz, Sichtbarkeit und &amp ein junges dynamisches Team">
-    <meta name="twitter:site" content="@YooLinkDE">
-    <meta name="twitter:creator" content="@YooLinkDE">
-    <meta name="twitter:label1" content="Verfasst von">
-    <meta name="twitter:data1" content="YooLink">
-    <meta name="twitter:label2" content="Zeit zum Lesen">
-    <meta name="twitter:data2" content="1 Minute">
+    <meta property="og:image" content="https://www.rsautoglas.de">
+    <meta property="og:description" content="RS Autoglas - Max Riedl &amp; Rainer Söldner GbR Winzer | [tagline_1]">
+    <meta property="og:url" content="https://www.rsautoglas.de/">
+    <meta property="og:title" content="RS Autoglas - Max Riedl &amp; Rainer Söldner GbR Winzer | [tagline_1]">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
 
 
     {% compress css inline %}
@@ -91,27 +72,27 @@
             <ul
               class="flex flex-col p-1 mt-3 border border-gray-100  bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium md:border-0 md:bg-white ">
               <li>
-                <a href="#informationen"
+                <a href="{% url 'home' %}#informationen"
                   class="block py-2 pl-3 pr-4 text-gray-700 rounded lg:p-2 hover:bg-teal-500 hover:text-white transition ease-linear duration-300 "
                   id="eins">INFORMATIONEN</a>
               </li>
               <li>
-                <a href="#leistungen"
+                <a href="{% url 'home' %}#leistungen"
                   class="block py-2 pl-3 pr-4 text-gray-700 rounded lg:p-2 hover:bg-teal-500 hover:text-white transition ease-linear duration-300 "
                   id="zwei">LEISTUNGEN</a>
               </li>
               <li>
-                <a href="#bilder"
+                <a href="{% url 'home' %}#bilder"
                   class="block py-2 pl-3 pr-4 text-gray-700 rounded lg:p-2 hover:bg-teal-500 hover:text-white transition ease-linear duration-300 "
                   id="drei">BILDER</a>
               </li>
               <li>
-                <a href="#kontakt"
+                <a href="{% url 'home' %}#kontakt"
                   class="block py-2 pl-3 pr-4 text-gray-700 rounded lg:p-2 hover:bg-teal-500 hover:text-white transition ease-linear duration-300 "
                   id="fuenf">KONTAKT</a>
               </li>
               <li>
-                <a href="#standort"
+                <a href="{% url 'home' %}#standort"
                   class="block py-2 pl-3 pr-4 text-gray-700 rounded lg:p-2 hover:bg-teal-500 hover:text-white transition ease-linear duration-300 "
                   id="vier">STANDORT</a>
               </li>
@@ -155,8 +136,8 @@
                       aktivieren. Die Cookie-Einstellungen können jederzeit über den Link im Footer dieser Website
                       angepasst werden.</p>
                     <div class="text-xs mt-5 mr-3">
-                      <a href="./impressum" class="mr-5">Impressum</a>
-                      <a href="./datenschutz">Datenschutz</a>
+                      <a href="{% url 'impressum' %}" class="mr-5">Impressum</a>
+                      <a href="{% url 'datenschutz' %}">Datenschutz</a>
                     </div>
                   </div>
                 </div>
@@ -187,10 +168,10 @@
           <div class="mt-25 flex flex-col  md:justify-between items-center text-xs md:text-sm text-black">
             <p class="order-2 md:order-1 mt-7 "> &copy; RS Autoglas - Max Riedl & Rainer Söldner GbR, 2023. </p>
             <div class="order-1 md:order-2 text-black mt-5">
-              <span class="px-2"><a href="#kontakt">Kontakt</a></span>
-              <span class="px-2 border-l"><a href="./impressum">Impressum</a></span>
-              <span class="px-2 border-l"><a href="./datenschutz">Datenschutz</a></span>
-              <span class="px-2 border-l"><a href="./cookies">Cookies</a></span>
+              <span class="px-2"><a href="{% url 'home' %}#kontakt">Kontakt</a></span>
+              <span class="px-2 border-l"><a href="{% url 'impressum' %}">Impressum</a></span>
+              <span class="px-2 border-l"><a href="{% url 'datenschutz' %}">Datenschutz</a></span>
+              <span class="px-2 border-l"><a href="{% url 'cookies' %}">Cookies</a></span>
             </div>
           </div>
         </div>
