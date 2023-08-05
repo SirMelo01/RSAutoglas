@@ -81,7 +81,6 @@ LOCAL_APPS = [
     "rsautoglas.users",
     # Your stuff: custom apps go here
     "rsautoglas.ycms",
-    "rsautoglas.designtemplates",
     "rsautoglas.blog",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
