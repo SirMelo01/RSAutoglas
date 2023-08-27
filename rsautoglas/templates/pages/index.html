@@ -25,25 +25,15 @@
       <h2 class=" text-sm md:text-2xl font-bold">Ihr Fachpartner für glasklaren Durchblick</h2>
     </div>
 
+
     <section class="mb-10 lg:mb-32 text-gray-800 mt-70 w-auto mx-5 lg:mx-16 scroll-my-20" id="informationen">
       <div class="block rounded-lg shadow-2xl bg-white">
         <div class="flex flex-wrap items-center">
           <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
             <div class="px-6 py-12 md:px-12">
-              <h2 class="text-center text-2xl mb-3 text-slate-600 font-bold">Informationen</h2>
+              <h2 class="text-center text-2xl mb-3 text-slate-600 font-bold">{{heroText.title}}</h2> 
               <div class=" text-sm lg:text-base xl:text-lg md:text-center">
-                <p>Für Max Riedl und Rainer Söldner ist ihr Beruf zur Passion geworden. Ganz klar verfolgen sie seit
-                  ihrer Firmengründung 2010, damals noch in der alteingesessenen KfZ-Werkstatt von Frau Spanl in der
-                  Passauer
-                  Straße in Winzer, ihr Ziel eines Betriebsgebäudes, welches optimal angepasst ist an die Anforderungen
-                  im Bereich
-                  Fahrzeugverglasung.</p>
-                <br>
-                <p>Im Juli 2017 wurde dann dieses selbstentworfene Firmengebäude in Winzer/Neßlbach bezogen.
-                  Das hochmotivierte Team sorgt seitdem werktags von 07:30 - 17:30 Uhr dafür, dass bei einem Glasschaden
-                  umgehend
-                  die neue Scheibe inkl. Ersatzzubehör zum Scheibentausch in der KfZ-Werkstatt angeliefert wird.</p>
-                <br>
+                <p>{{heroText.description}}</p>
               </div>
             </div>
           </div>
@@ -108,6 +98,17 @@
         <div class="h-50 relative">
           <div id="slider" class="container xs:h-129 sm:h-130 md:h-131 lg:h-132 xl:h-133 mx-auto relative">
 
+            {% for image in responsiveDesktopImages %}
+                  {% if forloop.first %}
+                    <img src="{{image.upload.url}}" class="h-full w-full object-scale-down" title="{{image.title}}" alt="{{image.title}}"/>
+                  {% else %}
+                    <img src="{{image.upload.url}}" class="h-full w-full object-scale-down hidden" title="{{image.title}}" alt="{{image.title}}"/>
+                  {% endif %}
+            {% endfor %}
+
+
+            <!--
+
             <img class="h-full w-full object-scale-down" src="{% static 'images/1.jpg' %}" alt="Firmengebaeude" />
             <img class="h-full w-full object-scale-down hidden" src="{% static 'images/2.jpg' %}" alt="Werkstattarbeit" />
             <img class="h-full w-full object-scale-down hidden" src="{% static 'images/3.jpg' %}" alt="Scheibentausch" />
@@ -123,6 +124,7 @@
             <img class="h-full w-full object-scale-down hidden" src="{% static 'images/13.jpg' %}" alt="Transporter mit Autoscheiben" />
             <img class="h-full w-full object-scale-down hidden" src="{% static 'images/14.jpg' %}" alt="Mitarbeiter RSAutoglas" />
             <img class="h-full w-full object-scale-down hidden" src="{% static 'images/Kalibrierung1.jpg' %}" alt="Kalibrierung von Autoscheiben" />
+            -->
           </div>
           <div class="absolute top-1/2 -translate-y-1/2 w-full  px-5">
             <div class="my-auto flex w-full justify-between ">

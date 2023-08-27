@@ -9,7 +9,7 @@
 <div class="container mx-auto mt-8">
     <div class="flex justify-between">
         <h1 class="text-2xl "><a href="{% url 'cms:sites' %}" class="text-blue-500">Seiten</a> / <a
-                href="{% url 'cms:site_hauptseite' %}" class="text-blue-500">Hauptseite</a> / <span>Hero</span></h1>
+                href="{% url 'cms:site_hauptseite' %}" class="text-blue-500">Hauptseite</a> / <span>Leistungen</span></h1>
         <div>
             {% csrf_token %}
             <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-6 hover:cursor-pointer"
@@ -24,19 +24,14 @@
         <div class="flex items-center max-w-4xl md:px-8">
             <div class="max-w-2xl mb-10 md:mx-auto sm:text-center lg:max-w-4xl md:mb-12">
                 <input
-                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-72 text-center inline-block py-2 px-4 text-xs font-semibold tracking-wider text-teal-900 uppercase leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-                    id="header" type="text" value="{% if textContent and textContent.header %}{{textContent.header}}{% else %}Webdesign Agentur - YooLink{% endif %}">
-                <input
-                    class="bg-gray-200 mt-3 appearance-none text-center border-2 border-gray-200 rounded-lg w-full inline-block py-2 px-4 mb-6 text-2xl font-bold tracking-tight text-teal-900 uppercase leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-                    id="title" type="text" value="{% if textContent and textContent.title %}{{textContent.title}}{% else %}Webdesign Agentur - YooLink{% endif %}">
+                    class="bg-gray-200 mt-3 appearance-none text-center border-2 border-gray-200 rounded-lg w-full inline-block py-2 px-4 mb-6 text-2xl font-bold tracking-tight text-teal-900 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                    id="title" type="text" value="{% if textContent and textContent.title %}{{textContent.title}}{% else %}Informationen{% endif %}">
                 <textarea rows="7"
                     class="bg-gray-200 rounded-lg appearance-none border-2 border-gray-200 w-full py-2 px-4 text-base text-gray-800 md:text-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                     id="description" type="text">{% if textContent and textContent.title %}{{textContent.description}}{% else %}
-                    Verbessern Sie Ihre digitale Präsenz und steigern Sie Ihren Umsatz mit einer neuen Website von
-                    YooLink!
-                    Durch eine ansprechende Ästhetik, intuitive Navigation und relevantem Inhalt erstellen wir als
-                    Webdesign
-                    Agentur einen Internetauftritt, der Ihr Unternehmen auf innovative Weise präsentiert.
+                    Für Max Riedl und Rainer Söldner ist ihr Beruf zur Passion geworden. Ganz klar verfolgen sie seit ihrer Firmengründung 2010, damals noch in der alteingesessenen KfZ-Werkstatt von Frau Spanl in der Passauer Straße in Winzer, ihr Ziel eines 
+                    Betriebsgebäudes, welches optimal angepasst ist an die Anforderungen im Bereich Fahrzeugverglasung. Im Juli 2017 wurde dann dieses selbstentworfene Firmengebäude in Winzer/Neßlbach bezogen. Das hochmotivierte Team sorgt seitdem werktags von
+                    07:30 - 17:30 Uhr dafür, dass bei einem Glasschaden umgehend die neue Scheibe inkl. Ersatzzubehör zum Scheibentausch in der KfZ-Werkstatt angeliefert wird.
                     {% endif %}
                 </textarea>
             </div>
