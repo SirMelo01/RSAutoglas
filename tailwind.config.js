@@ -7,6 +7,11 @@ module.exports = {
             "./rsautoglas/templates/designs/*.{html,js}",
             "./rsautoglas/templates/blog/*.{html,js}",
             "./rsautoglas/templates/registration/*.{html,js}",
+            "./rsautoglas/templates/pages/cms/content/*.{html,js}",
+            "./rsautoglas/templates/pages/cms/content/sites/*.{html,js}",
+            "./rsautoglas/templates/pages/cms/content/sites/**/*.{html,js}",
+            "./rsautoglas/templates/pages/cms/blog/*.{html,js}",
+            "./rsautoglas/static/js/cms/**/*.js",
             ],
   theme: {
     screens: {

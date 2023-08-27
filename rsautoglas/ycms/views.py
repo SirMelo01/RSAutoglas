@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import get_object_or_404, render, redirect
-from rsautoglas.ycms.models import fileentry, FAQ, Galerie, Blog, GaleryImage
+from rsautoglas.ycms.models import fileentry, FAQ, Galerie, Blog, GaleryImage, TextContent
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
@@ -100,6 +100,24 @@ def delete_file(request, id):
     file = fileentry.objects.get(id=id)
     file.delete()
     return JsonResponse({"success": "File wurde erfolgreich gelöscht"})
+
+@login_required(login_url='login')
+def update_file(request, id):
+    if request.method == 'POST':
+        title = request.POST.get('title', '')
+        place = request.POST.get('place', '')
+        file = fileentry.objects.get(id=id)
+        if title:
+            file.title = title
+        if place:
+            if fileentry.objects.filter(place=place).exists():
+                extra = fileentry.objects.get(place=place)
+                extra.place = "nothing"
+                extra.save()
+            file.place = place 
+        file.save()
+        return JsonResponse({"success": "File wurde erfolgreich bearbeitet"})
+    return JsonResponse({"error": "Etwas ist schief gelaufen. Versuche es später nochmal"})
 
 # Delete File
 @login_required(login_url='login')
@@ -423,14 +441,15 @@ def save_galery(request, id):
     if request.method == 'POST':
         title = request.POST.get('title', '')
         description = request.POST.get('description', '')
-        active = request.POST.get('active', False)
+        
         galery.title = title
         galery.description = description
-        if active == "true":
-            active = True
-        else:
-            active = False
-        galery.active = active
+        place = request.POST.get('place', 'nothing')
+        if Galerie.objects.filter(place=place).exists():
+            extra = Galerie.objects.get(place=place)
+            extra.place = "nothing"
+            extra.save()
+        galery.place = place
         galery.save()
         return JsonResponse({"success": "Die Galerie wurde erfolgreich gespeichert"})
     return JsonResponse({"error": "Fehler beim Speichern der Galerie"})
@@ -477,15 +496,18 @@ def all_images(request):
     if request.method == 'GET':
         images = fileentry.objects.all()
         # Liste zur Speicherung der Bild-URLs erstellen
-        image_urls = []
+        image_urls = [] 
 
         # URLs für jedes fileentry-Objekt erstellen
         for entry in images:
             # URL für das Bild erstellen
             image_url = entry.file.url
-
+            data = {
+                "url": image_url,
+                "id": entry.id
+            }
             # URL zur Liste hinzufügen
-            image_urls.append(image_url)
+            image_urls.append(data)
 
         # JSON-Antwort mit den Bild-URLs senden
         return JsonResponse({'image_urls': image_urls})
@@ -526,3 +548,94 @@ def all_galerien(request):
         return JsonResponse({'galerien': galerien_list}, safe=False)
     
     return JsonResponse({'error': 'Falsche Anfrage (Erlaubt: GET)'})
+
+
+# Seiten
+@login_required(login_url='login')
+def content_view(request):
+    return render(request, "pages/cms/content/content.html", {})
+
+# Seiten
+@login_required(login_url='login')
+def site_view_main(request):
+    return render(request, "pages/cms/content/sites/MainSite.html", {})
+
+# Main Site - Hero Section
+@login_required(login_url='login')
+def site_view_main_hero(request):
+    data = {}
+    if TextContent.objects.filter(name="main_hero").exists():
+        data["textContent"] = TextContent.objects.get(name='main_hero')
+    return render(request, "pages/cms/content/sites/mainsite/HeroContent.html", data)
+
+@login_required(login_url='login')
+def site_view_main_responsive(request):
+    data = {}
+    if TextContent.objects.filter(name="main_responsive").exists():
+        data["textContent"] = TextContent.objects.get(name='main_responsive')
+    return render(request, "pages/cms/content/sites/mainsite/ResponsiveContent.html", data)
+
+@login_required(login_url='login')
+def site_view_main_cms(request):
+    data = {}
+    if TextContent.objects.filter(name="main_cms").exists():
+        data["textContent"] = TextContent.objects.get(name='main_cms')
+    if fileentry.objects.filter(place='main_cms').exists():
+        data["cmsImage"] = fileentry.objects.get(place='main_cms')
+    return render(request, "pages/cms/content/sites/mainsite/CmsContent.html", data)
+
+@login_required(login_url='login')
+def site_view_main_price(request):
+    data = {}
+    if TextContent.objects.filter(name="main_price").exists():
+        data["textContent"] = TextContent.objects.get(name='main_price')
+    return render(request, "pages/cms/content/sites/mainsite/PriceContent.html", data)
+
+@login_required(login_url='login')
+def site_view_main_team(request):
+    data = {}
+    if TextContent.objects.filter(name="main_team").exists():
+        data["textContent"] = TextContent.objects.get(name='main_team')
+
+    return render(request, "pages/cms/content/sites/mainsite/TeamContent.html", data)
+
+
+@login_required(login_url='login')
+def saveTextContent(request):
+    if request.method == 'POST':
+        header = request.POST.get('header', '')
+        title = request.POST.get('title', '')
+        description = request.POST.get('description', '')
+        buttonText = request.POST.get('buttonText', '')
+        # Model-Name: z.B. main_hero
+        name = request.POST.get('name', '')
+
+        images = json.loads(request.POST.get('images', '[]'))
+
+        for image in images:
+            if fileentry.objects.filter(id=image["id"]).exists():
+                file = fileentry.objects.get(id=image["id"])
+                key = image['key']
+                if key:
+                    if fileentry.objects.filter(place=key).exists():
+                        extra = fileentry.objects.get(place=key)
+                        extra.place = "nothing"
+                        extra.save()
+                    file.place = image['key']
+                    file.save()
+
+        if TextContent.objects.filter(name=name).exists():
+            # Create Model
+            textContent = TextContent.objects.get(name=name)
+            textContent.header = header
+            textContent.title = title
+            textContent.description = description
+            textContent.buttonText = buttonText
+            textContent.save()
+            return JsonResponse({'success': 'Element wurde erfolgreich gespeichert'}, status=200)
+        else:
+            textContent = TextContent.objects.create(name=name, header=header, title=title, description=description, buttonText=buttonText)
+            textContent.save()
+            return JsonResponse({'success': 'Element wurde erfolgreich gespeichert'}, status=201)
+           
+    return JsonResponse({'error': 'Etwas ist falsch gelaufen. Versuche es später nochmal'}, status=400)

@@ -34,6 +34,7 @@ class fileentry(models.Model):
     file = models.ImageField(upload_to='yoolink/')
     uploaddate = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200, default="Bildtitel")
+    place = models.CharField(max_length=60, default="")
 
     def __str__(self):
         return os.path.basename(self.file.name)
@@ -45,8 +46,10 @@ class fileentry(models.Model):
     def delete_model_only(self, *args, **kwargs):
         super(fileentry, self).delete(*args, **kwargs) 
 
+def upload_to_galery_image(instance, filename):
+    return f"yoolink/galery/{instance.id}/{filename}"
 class GaleryImage(models.Model):
-    upload = models.ImageField(upload_to='yoolink/galery/',)
+    upload = models.ImageField(upload_to=upload_to_galery_image,)
     uploaddate = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200, default="Bildtitel")
 
@@ -63,7 +66,8 @@ class GaleryImage(models.Model):
 class Galerie(models.Model):
     title = models.CharField(max_length=100, default="Titel")
     description = models.TextField(default="")
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
+    place = models.CharField(max_length=60, default="")
     images = models.ManyToManyField(GaleryImage)
     created_at = models.DateTimeField(auto_now_add=True)
     changed_at = models.DateTimeField(auto_now=True)
@@ -107,3 +111,12 @@ class Message(models.Model):
     message = models.CharField(max_length=600)
     date = models.DateField()
     seen = models.BooleanField(default=False)
+
+
+class TextContent(models.Model):
+    name = models.CharField(max_length=50, default="", unique=True)
+    header = models.CharField(max_length=50, default="")
+    title = models.CharField(max_length=70, default="")
+    description = models.CharField(max_length=700, default="")
+    buttonText = models.CharField(max_length=60, default="")
+
