@@ -18,8 +18,12 @@ def load_index(request):
     if TextContent.objects.filter(name="main_responsive").exists():
         context["responsiveText"] = TextContent.objects.get(name='main_responsive')
 
-    if TextContent.objects.filter(name="main_cms").exists():
-        context["cmsText"] = TextContent.objects.get(name='main_cms')
+    if TextContent.objects.filter(name="main_cms1").exists():
+        context["cmsText1"] = TextContent.objects.get(name='main_cms1')
+    if TextContent.objects.filter(name="main_cms2").exists():
+        context["cmsText2"] = TextContent.objects.get(name='main_cms2')
+    if TextContent.objects.filter(name="main_cms3").exists():
+        context["cmsText3"] = TextContent.objects.get(name='main_cms3')
 
     if TextContent.objects.filter(name="main_price").exists():
         context["priceText"] = TextContent.objects.get(name='main_price')
@@ -38,8 +42,12 @@ def load_index(request):
         context['responsiveHandyImages'] = Galerie.objects.get(place='main_responsive_handy').images.all()
 
     # Images
-    if fileentry.objects.filter(place='main_cms').exists():
-        context["cmsImage"] = fileentry.objects.get(place='main_cms')
+    if fileentry.objects.filter(place='main_cms1').exists():
+        context["cmsImage1"] = fileentry.objects.get(place='main_cms1')
+    if fileentry.objects.filter(place='main_cms2').exists():
+        context["cmsImage2"] = fileentry.objects.get(place='main_cms2')
+    if fileentry.objects.filter(place='main_cms3').exists():
+        context["cmsImage3"] = fileentry.objects.get(place='main_cms3')
 
     return render(request, 'pages/index.html', context=context)
 

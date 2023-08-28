@@ -579,9 +579,17 @@ def site_view_main_responsive(request):
 def site_view_main_cms(request):
     data = {}
     if TextContent.objects.filter(name="main_cms").exists():
-        data["textContent"] = TextContent.objects.get(name='main_cms')
-    if fileentry.objects.filter(place='main_cms').exists():
-        data["cmsImage"] = fileentry.objects.get(place='main_cms')
+        data["textContent1"] = TextContent.objects.get(name='main_cms1')
+    if TextContent.objects.filter(name="main_cms").exists():
+        data["textContent2"] = TextContent.objects.get(name='main_cms2')
+    if TextContent.objects.filter(name="main_cms").exists():
+        data["textContent3"] = TextContent.objects.get(name='main_cms3')
+    if fileentry.objects.filter(place='main_cms1').exists():
+        data["cmsImage1"] = fileentry.objects.get(place='main_cms1')
+    if fileentry.objects.filter(place='main_cms2').exists():
+        data["cmsImage2"] = fileentry.objects.get(place='main_cms2')
+    if fileentry.objects.filter(place='main_cms3').exists():
+        data["cmsImage3"] = fileentry.objects.get(place='main_cms3')
     return render(request, "pages/cms/content/sites/mainsite/CmsContent.html", data)
 
 @login_required(login_url='login')

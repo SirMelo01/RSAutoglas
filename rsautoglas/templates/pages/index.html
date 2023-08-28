@@ -50,39 +50,29 @@
         <div class="flex flex-wrap -m-4">
           <div class="p-4 sm:w-1/2 lg:w-1/3">
             <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="{% static 'images/großehalle.jpg' %}" alt="Werkstatthalle">
+              <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="{{cmsImage1.file.url}}" alt="{{cmsImage1.title}}">
               <div class="p-6 h-full hover:bg-teal-500 hover:text-white transition ease-linear duration-300">
-                <h2 class="text-2xl font-semibold mb-3">Professionelle Montagehalle für Fahrzeuge aller Art</h2>
-                <p class="leading-relaxed mb-3 text-sm md:text-base">Ein besonderes Highlight im neuen Firmengebäude ist
-                  die für LKWs und Omnibusse optimierte Montagehalle. Hier können bei allen Witterungsverhältnissen
-                  Scheiben in jeder Übergröße auf Kraftfahrzeuge montiert werden. Für Betriebe wie z.B. Speditionen und
-                  Baufirmen realisiert RS Autoglas einen Vor-Ort Termin außerhalb der KfZ-Nutzung.</p>
+                <h2 class="text-2xl font-semibold mb-3">{{cmsText1.title}}</h2>
+                <p class="leading-relaxed mb-3 text-sm md:text-base">{{cmsText1.description}}</p>
               </div>
             </div>
           </div>
           <div class="p-4 sm:w-1/2 lg:w-1/3">
             <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="{% static 'images/service.jpg' %}"  alt="Servicebeispiel">
+              <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="{{cmsImage2.file.url}}" alt="{{cmsImage2.title}}">
               <div class="p-6 h-full hover:bg-teal-500 hover:text-white transition ease-linear duration-300">
-                <h2 class="text-2xl font-semibold mb-3">Ihre Servicevorteile</h2>
-                <p class="leading-relaxed mb-3 text-sm md:text-base">- Sofortige Abrufbarkeit gängiger Scheiben &
-                  Zubehör aus dem hauseigenen Lager</p>
-                <p class="leading-relaxed mb-3 text-sm md:text-base">- Kostenlose Zustellung bestellter Scheiben &
-                  Zubehör am Folgetag durch hauseigenen Lieferservice</p>
-                <p class="leading-relaxed mb-3 text-sm md:text-base">- Gebührenfreie Altglasentsorgung</p>
-                <p class="leading-relaxed mb-3 text-sm md:text-base">- Unterstützung für KfZ-Werkstätten bei
-                  Problemfällen oder Spitzenzeiten
-                  durch niederbayernweit agierende Fachteams</p>
+                <h2 class="text-2xl font-semibold mb-3">{{cmsText2.title}}</h2>
+                <p class="leading-relaxed mb-3 text-sm md:text-base">{{cmsText2.description}}</p>
+
               </div>
             </div>
           </div>
           <div class="p-4 sm:w-1/2 lg:w-1/3">
             <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="{% static 'images/Kalibrierung2.jpg' %}" alt="Autoglas Kalibrierung">
+              <img class="lg:h-72 md:h-48 w-full object-cover object-center" src="{{cmsImage3.file.url}}" alt="{{cmsImage3.title}}">
               <div class="p-6 h-full hover:bg-teal-500 hover:text-white transition ease-linear duration-300">
-                <h2 class="text-2xl font-semibold mb-3">Kalibrierungsverfahren</h2>
-                <p class="leading-relaxed mb-3 text-sm md:text-base">Fahrassistenzsysteme sind heute Gang und Gäbe. Sie können aber nur funktionieren, wenn die Systeme nach dem Scheibentausch fachmännisch kalibriert werden.
-                  Ohne eine genaue Kalibrierung können Fahrassistenzsysteme Daten nicht richtig erfassen, was das Unfallrisiko erheblich erhöht. Um das zu verhindern, kalibrieren wir die Frontkamera gemäß den Vorgaben des Fahrzeugherstellers.</p>
+                <h2 class="text-2xl font-semibold mb-3">{{cmsText3.title}}</h2>
+                <p class="leading-relaxed mb-3 text-sm md:text-base">{{cmsText3.description}}</p>
               </div>
             </div>
           </div>
