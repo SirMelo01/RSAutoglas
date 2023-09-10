@@ -42,9 +42,9 @@ urlpatterns = [
     path('seiten/', views.content_view, name='sites'),
     path('seiten/save/', views.saveTextContent, name='save_text_content'),
     path('seiten/hauptseite/', views.site_view_main, name='site_hauptseite'),
-    path('seiten/hauptseite/Hero/', views.site_view_main_hero, name='site_hauptseite_hero'),
+    path('seiten/hauptseite/Informationen/', views.site_view_main_hero, name='site_hauptseite_hero'),
     path('seiten/hauptseite/Reponsive/', views.site_view_main_responsive, name='site_hauptseite_responsive'),
-    path('seiten/hauptseite/CMS/', views.site_view_main_cms, name='site_hauptseite_cms'),
+    path('seiten/hauptseite/Leistungen/', views.site_view_main_cms, name='site_hauptseite_cms'),
     path('seiten/hauptseite/Preis/', views.site_view_main_price, name='site_hauptseite_price'),
     path('seiten/hauptseite/Team/', views.site_view_main_team, name='site_hauptseite_team'),
 ]
