@@ -1,12 +1,32 @@
-{% extends "base.html" %}
-{% load static i18n compress%}
+{% load static i18n compress%}<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}RSAutoglas{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Diese Webseite wurde erstellt von YooLink.de, Am Altbach 6, DE-94491 Hengersberg">
+    <meta name="description" content="RS Autoglas - Max Riedl &amp; Rainer Söldner GbR Winzer | professionell - leistungsstark - zuverlässig">
+    <link rel="canonical" href="https://www.rsautoglas.de{{ request.path }}">
 
-{% block title %}{{block.super}} - Cms Login{% endblock title %}
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.rsautoglas.de">
+    <meta property="og:description" content="RS Autoglas - Max Riedl &amp; Rainer Söldner GbR Winzer | [tagline_1]">
+    <meta property="og:url" content="https://www.rsautoglas.de/">
+    <meta property="og:title" content="RS Autoglas - Max Riedl &amp; Rainer Söldner GbR Winzer | [tagline_1]">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
 
-{% block navbar %}
-{% endblock navbar %}
 
-{% block content %}
+    {% compress css inline %}
+      <link href="{% static 'css/output.css' %}" rel="stylesheet">
+    {% endcompress css %}
+
+
+  </head>
+
+  <body class="bg-gray-100">
+    
     <section class="text-gray-600 body-font bg-gray-100">
         <div class="container xl:px-32 px-5 py-36 mx-auto flex flex-wrap items-center">
             <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -47,11 +67,17 @@
             </div>
         </div>
     </section>
-    {% endblock content %}
 
 
-{% block footer %}
-{% endblock footer %}
-</body>
+    
 
+    {% compress js inline %}
+      <script defer src="{% static 'js/base.js' %}"></script>
+    {% endcompress js %}
+
+  </body>
 </html>
+
+
+
+
