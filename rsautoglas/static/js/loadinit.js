@@ -26,13 +26,13 @@ font3.rel = "stylesheet";
 
 var cookieselect = getCookie("Cookie-Consent");
 var cookiemapselect = getCookie("Cookie-Map");
-var cookiefondselect = getCookie("Cookie-Fond");
+var cookiefontselect = getCookie("Cookie-Font");
 if(cookiemapselect === "true"){
   document.head.appendChild(link);
   document.head.appendChild(script);
   //hier dann weiter scripte einbinden
 }
-if(cookiefondselect === "true"){
+if(cookiefontselect === "true"){
   document.head.appendChild(font1);
   document.head.appendChild(font2);
   document.head.appendChild(font3);

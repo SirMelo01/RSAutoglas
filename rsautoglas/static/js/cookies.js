@@ -1,7 +1,7 @@
 var form = document.querySelector("form");
 var cookieslider = document.getElementById("cookie");
 var mapslider = document.getElementById("map");
-var fondslider = document.getElementById("fond");
+var fontslider = document.getElementById("font");
 
 function cookiereload2() {
   if (cookieslider.checked === true) {
@@ -20,12 +20,12 @@ function cookiereload2() {
       "Cookie-Map=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   }
 
-  if (fondslider.checked === true) {
+  if (fontslider.checked === true) {
     document.cookie =
-      "Cookie-Fond=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+      "Cookie-Font=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   } else {
     document.cookie =
-      "Cookie-Fond=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+      "Cookie-Font=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   }
 }
 
@@ -38,25 +38,25 @@ onload = function () {
     mapslider.checked = true;
   }
 
-  if (cookiefondselect === "true") {
-    fondslider.checked = true;
+  if (cookiefontselect === "true") {
+    fontslider.checked = true;
   }
 };
 
 cookieslider.addEventListener("change", (e) => {
   if (cookieslider.checked === true) {
     mapslider.checked = true;
-    fondslider.checked = true;
+    fontslider.checked = true;
   } else {
     mapslider.checked = false;
-    fondslider.checked = false;
+    fontslider.checked = false;
   }
   cookiereload2();
 });
 
 mapslider.addEventListener("change", (e) => {
   if (mapslider.checked === true) {
-    if (fondslider.checked === true) {
+    if (fontslider.checked === true) {
       cookieslider.checked = true;
     }
   } else {
@@ -65,8 +65,8 @@ mapslider.addEventListener("change", (e) => {
   cookiereload2();
 });
 
-fondslider.addEventListener("change", (e) => {
-  if (fondslider.checked === true) {
+fontslider.addEventListener("change", (e) => {
+  if (fontslider.checked === true) {
     if (mapslider.checked === true) {
       cookieslider.checked = true;
     }
