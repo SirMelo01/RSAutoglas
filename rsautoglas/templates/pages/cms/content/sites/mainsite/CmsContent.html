@@ -54,7 +54,7 @@
                 class="relative lg:mt-16 lg:mb-28 h-auto m-8 -ml-24 w-full overflow-hidden shadow-2xl rounded-md hidden lg:block">
                 <img class="absolute left-0 top-0 w-[45rem] max-w-none content-image" key="main_cms2"
                     imgId="{% if cmsImage2 %}{{cmsImage2.id}}{% endif %}"
-                    src="{% if cmsImage2 %}{{ cmsImage2.file.url }}{% else %}{% static 'images/cms-screen.png' %}{% endif %}"
+                    src="{% if cmsImage2 %}{{ cmsImage2.file.url }}{% else %}{% static 'images/placeholder.png' %}{% endif %}"
                     alt="Image">
                 <span class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img"><i class="bi bi-pencil-square"></i></span>
             </div>
@@ -79,7 +79,7 @@
                 class="relative lg:mt-16 lg:mb-28 h-auto m-8 -ml-24 w-full overflow-hidden shadow-2xl rounded-md hidden lg:block">
                 <img class="absolute left-0 top-0 w-[45rem] max-w-none content-image" key="main_cms3"
                     imgId="{% if cmsImage3 %}{{cmsImage3.id}}{% endif %}"
-                    src="{% if cmsImage3 %}{{ cmsImage3.file.url }}{% else %}{% static 'images/cms-screen.png' %}{% endif %}"
+                    src="{% if cmsImage3 %}{{ cmsImage3.file.url }}{% else %}{% static 'images/placeholder.png' %}{% endif %}"
                     alt="Image">
                 <span class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img"><i class="bi bi-pencil-square"></i></span>
             </div>
