@@ -72,6 +72,5 @@ https://www.youtube.com/watch?v=DLxcyndCvO4 hier ab minute 28
 
 
 
-# ist noch für Yoolink muss noch für RSAutoglas gemacht werden
-ssh root@65.108.254.206
-
+## SSH ROOT
+ssh root@128.140.103.245
