@@ -47,7 +47,7 @@ class fileentry(models.Model):
         super(fileentry, self).delete(*args, **kwargs) 
 
 def upload_to_galery_image(instance, filename):
-    return f"rsautoglas/galery/{instance.id}/{filename}"
+    return f"rsautoglas/galeryImages/{filename}"
 class GaleryImage(models.Model):
     upload = models.ImageField(upload_to=upload_to_galery_image,)
     uploaddate = models.DateTimeField(auto_now_add=True)
@@ -117,6 +117,6 @@ class TextContent(models.Model):
     name = models.CharField(max_length=50, default="", unique=True)
     header = models.CharField(max_length=50, default="")
     title = models.CharField(max_length=70, default="")
-    description = models.CharField(max_length=700, default="")
+    description = models.TextField(default="")
     buttonText = models.CharField(max_length=60, default="")
 
