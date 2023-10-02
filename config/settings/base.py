@@ -165,6 +165,7 @@ DEFAULT_FILE_STORAGE = 'config.settings.cdn.backends.MediaRootS3Boto3Storage'
 AWS_ACCESS_KEY_ID='DO00YWEZNXVPCWWG4JTZ'
 AWS_SECRET_ACCESS_KEY = env(
     "DIGITAL_OCEAN_SECRET_KEY",
+    default="qRSvWvAIhUdJAEhqZx6YIuEc+vxDKH2E+Zh6ywuP4eM"
 )
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
